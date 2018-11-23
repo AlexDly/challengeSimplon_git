@@ -45,6 +45,8 @@
 					</div>
 				</div>
 
+				<% if (tableauArticles){ %>
+
 				<% tableauArticles.forEach(function(el, index) { %>
 				<div class="row" >
 					<div  class="cold-md-12 article" value="<%=el._id%>">
@@ -55,7 +57,7 @@
 					</div>
 				</div>
 				<% }); %>
-
+				<% } %>
 	
 					  </ul>
 					</nav>

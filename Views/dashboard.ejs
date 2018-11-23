@@ -59,6 +59,8 @@
 					</div>
 				</div>
 
+				<% if (tableauArticles){ %>
+
 				<% tableauArticles.forEach(function(el, index) { %>
 				    
 			
@@ -86,6 +88,7 @@
 						<input type="hidden" name="id" value="<%=el._id%>">
 					</div> 
 				<% }); %>
+				<% } %>
 	
 			</div> 
  	
