@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page administration-Edition</title>
+		<base href="/">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+		<link rel="stylesheet" type="text/css" href="style3.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
+
+<!--	<script type="text/javascript">
+			$.urlParam = function(name){
+			var results = new RegExp('[\?]' + name + '=([^&#]*)').exec(window.location.href);
+			return results[1] || 0;
+		}
+
+		console.log($.urlParam('id'));
+		var identifiant=$.urlParam('id');
+
+		</script> -->
+
+	<body>
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div id="imgDiv" class="col-md-6">
+						<img src="logo-blanc.png" />
+					</div>
+
+					<div class="col-md-6" id="idTitle">
+						<span id="adminTitle">Page Edition</span><br>		
+					</div>
+				</div>
+				<hr>
+			
+			</div>
+
+			
+
+		</header>
+		
+
+		<section>
+			
+		<form method="POST" action="/createOrModifUser">	
+			<div id="blocModif" class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<span>nom</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="nomUser" placeholder="nom de l'utilisateur">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<span>email</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="emailUser" placeholder="email de l'utilisateur">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<span>mot de passe</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<input type="text" name="mdpUser" placeholder="mot de passe de l'utilisateur">
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<input class="buttn" type="submit" name="submit" value="Valider">
+					</div>
+
+					<div class="col-md-6">
+						<input type="reset" name="contenuArticle" value="Annuler">
+					</div>
+
+					<input type="hidden" name="identifiant">
+
+					<input type="hidden" name="crOrmdf">
+				</div>
+			</div> 
+		</form>
+
+		</section>
+
+		
+		<script type="text/javascript">
+
+			console.log('<%=user[0].nom%>')
+
+		//Chargement de la page avec la bd
+		if('<%=user%>'=='creation'){
+			$('input[type=submit]').val('Creer');
+			$('input[name=crOrmdf]').val('create');
+		}else{
+
+			$('input[name=nomUser]').val('<%= user[0].nom %>');
+			$('input[name=emailUser]').val('<%= user[0].email %>');
+			$('input[name=mdpUser]').val('<%= user[0].mdp %>');
+			
+			$('input[type=submit]').val('Modifier');
+			$('input[name=identifiant]').val('<%= user[0]._id %>');
+			$('input[name=crOrmdf]').val('modif');
+		}
+		</script>
+
+	</body>
+
+
+</html>

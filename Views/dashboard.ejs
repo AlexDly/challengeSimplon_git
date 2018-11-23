@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page administration</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="style3.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div id="imgDiv" class="col-md-6">
+						<img src="logo-blanc.png" />
+					</div>
+
+					<div class="col-md-6" id="idTitle">
+						<span id="adminTitle">Page Administration</span><br>		
+					</div>
+				</div>
+				<hr>
+				<div id="nav" class="row">
+					<div class="col-md-6">
+						<span style="font-size: 1.5em;vertical-align: -5%;">&rarr;</span><span> Les Articles</span>
+					</div>
+
+					<div class="col-md-6">
+						<span style="font-size: 1.5em;vertical-align: -5%;">&rarr;</span><span><a href="/users">Les Utilisateurs</a> </span>
+					</div>
+				</div>
+				<hr class="hr50">
+			</div>
+
+			
+
+		</header>
+		
+
+		<section>
+			<div class="container-fluid">
+				<div class="row rowWidth50">
+					<div class="col-md-12" id="lesarticles">
+						<span>LES ARTICLES</span>
+					</div>
+				</div>
+
+				<div class="row rowWidth20" >
+					<div class="col-md-12"id="addArticle">
+						<span style="font-size: 2em;vertical-align: -5%;">+</span><span> Ajouter un article</span>
+					</div>
+				</div>
+
+				<% tableauArticles.forEach(function(el, index) { %>
+				    
+			
+				    <div class="row articleBloc">
+						<div class="col-md-9">
+								<h1><%= el.titre %></h1>
+								<span style="font-size: 1.6em;font-style: italic;"><%=el.sstitre %></span>
+								<p><%=el.resume %></p>
+						</div>
+
+						<div class="col-md-3" style="display: flex;justify-content: space-around;align-items: center;">
+							<div>
+								<div>
+									<i class="far fa-edit" value="<%=el._id%>"></i>
+								</div>						
+							</div>
+
+							<div>
+								<div style="padding-left: 20%;">
+									<i class="fas fa-trash-alt" value="<%=el._id%>"></i>
+								</div>						
+							</div>
+
+						</div>
+						<input type="hidden" name="id" value="<%=el._id%>">
+					</div> 
+				<% }); %>
+	
+			</div> 
+ 	
+
+		</section>
+
+	<script type="text/javascript">
+		$('#addArticle').click(function(){
+			window.location= '/edition/0';
+    	return false;
+		});
+
+		$('.far').click(function(e){
+				console.log(e.target.getAttribute('value'));
+
+				window.location= '/edition/'+e.target.getAttribute("value");
+    			return false;
+		});
+
+		$('.fas').click(function(e){
+				console.log(e.target.getAttribute('value')+" supp");
+
+				window.location= '/delete/'+e.target.getAttribute("value");
+    			return false;
+				
+		});
+
+	</script>
+
+	</body>
+
+
+</html>

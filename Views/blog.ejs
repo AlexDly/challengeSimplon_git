@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>blog</title>
+		<base href="/">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	</head>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<body>
+
+		<header>
+
+			<div class="container">
+				<div class="row">
+					<div id="imgDiv" class="col-md-5">
+						<img src="logo-blanc.png" />
+					</div>
+
+					<div class="col-md-5">
+						<span id="blogTitle">Le Blog de l'entreprise</span><br>		
+					</div>
+
+					<div id="inscription" class="col-md-2">
+						<i  class="fas fa-user-plus"></i><br>		
+					</div>
+				</div>
+				
+			</div>
+			<hr>
+		</header>
+
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="cold-md-12" id="lastArtciles">
+						<span>DERNIERS ARTICLES</span>
+					</div>
+				</div>
+
+				<% tableauArticles.forEach(function(el, index) { %>
+				<div class="row" >
+					<div  class="cold-md-12 article" value="<%=el._id%>">
+							<h1><%=el.titre %></h1>
+							<span><%=el.sstitre %></span>
+							<p><%=el.resume %></p>
+						
+					</div>
+				</div>
+				<% }); %>
+
+	
+					  </ul>
+					</nav>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="row" id="pagi">
+					<nav aria-label="...">
+					  <ul class="pagination">
+					    <li id="previousActivate" class="page-item disabled">
+					      <a id="lienprec" class="page-link" href="#" tabindex="-1">Previous</a>
+					    </li>
+					    <li id="p1" class="page-item active">
+					    	<a class="page-link" href="/blog/1">1</a>
+					    </li>
+
+					  </ul>
+					</nav>
+				</div>
+
+		</footer>
+
+		<script type="text/javascript">
+
+				var totalPages=<%=nbPages%>;
+
+				for(var i=1;i<totalPages;i++){
+					var balise='<li id="p'+(parseInt(i)+1)+'" class="page-item"><a class="page-link" href="blog/'+(i+1)+'">'+(i+1)+'</a></li>';
+					console.log(balise);
+					$(balise).appendTo('ul');					
+				}
+				$('<li id="nextActivate" class="page-item"><a id="next" class="page-link" href="">Next</a></li>').appendTo('ul');
+
+		</script>
+
+		<script type="text/javascript">
+
+				var totalPages=<%=nbPages%>;
+				var page=<%=page%>;
+				var selector='#p'+page;
+				
+				var active=document.querySelector('.active');
+				active.classList.remove('active');
+
+				var activation=document.querySelector(selector);
+				activation.classList.add('active');
+
+				var pagenext=page+1;
+				var pageprev=page-1;
+				var hrfnxt='/blog/'+pagenext;
+				var hrfprev='/blog/'+pageprev;
+				var nxt=document.querySelector('#next');
+				var prev=document.querySelector('#lienprec');
+				nxt.setAttribute('href',hrfnxt);
+				prev.setAttribute('href',hrfprev);
+
+
+				if(page!=1){
+					document.querySelector('#previousActivate').classList.remove('disabled');					
+				}
+				if(page==totalPages){
+					var classNext=document.querySelector('#nextActivate');
+					classNext.classList.add('disabled');
+					console.log(classNext.className);
+				}
+
+				$('.page-link .active').css('color','red');
+		</script>
+
+		
+
+		<script type="text/javascript">
+			$('.article').click(function(e){
+				console.log(this.getAttribute('value'));
+
+				window.location= '/article/'+this.getAttribute("value");
+    			return false; 
+		});
+			$('i').click(function(){
+
+				window.location= '/inscription/';
+    			return false;
+			});
+
+		</script>
+
+	</body>
+</html>
