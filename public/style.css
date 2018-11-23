@@ -1,0 +1,159 @@
+body
+{
+	background-color: black;
+}
+hr
+{
+	background-color: white;
+	width: 80%;
+}
+
+header
+{
+	background-color: black;
+	color: white;
+}
+#imgDiv img
+{
+	margin-top: 2%;
+}
+
+#blogTitle
+{
+	font-size: 3em;
+	font-style: italic;
+}
+#lastArtciles
+{
+	background-color: #DF013A;
+	font-size: 3em;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5%;
+	border-radius: 1%;
+	color: white;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	text-align: center;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.article
+{
+	background-color: white;
+	color: black;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.article:hover
+{
+	cursor: pointer;
+	animation-name: aggrandissement;
+	animation-duration: 2s;
+}
+@keyframes aggrandissement
+{
+	from{
+	}
+	to{
+		transform: scale(1.1);
+	}
+}
+.article span
+{
+	font-style: italic;
+	font-size: 1.5em;
+}
+
+/* inscription */
+#inscription
+{
+	color: white;
+	margin-top: 3%;
+	font-size: 3em;
+	text-align: center;
+}
+#inscription:hover
+{
+	cursor: pointer;
+	animation-name: aggrandissementSecond;
+	animation-duration: 2s;
+}
+@keyframes aggrandissementSecond
+{
+	from{
+	}
+	to{
+		transform: scale(1.4);
+	}
+}
+
+#pagi
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.7em;
+	margin-top: 2%;
+}
+.page-item.active .page-link
+{
+	color: white;
+	background-color:#DF013A;
+	border-color: initial;
+}
+.page-link
+{
+	color: #DF013A;
+}
+
+
+/* page article */
+
+#blocPageArticle
+{
+	background-color: white;
+	color: black;
+	padding: 5%;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+#blocPageArticle span
+{
+	font-style: italic;
+	font-size: 1.5em;
+
+}
+#blocPageArticle p
+{
+	margin-top: 5%;
+	font-size: 1.2em
+}
+#thisArticle
+{
+	background-color: #DF013A;
+	font-size: 3em;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 5%;
+	border-radius: 1%;
+	color: white;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	text-align: center;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+#imgArticle
+{
+	margin-top: 5%;
+	margin-bottom: 5%;
+	width: 50%;
+	margin-left: 25%;
+}
