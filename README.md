@@ -3,6 +3,9 @@ Challenge Nodejs Simplon
 
 _Quelques précisions:
 
+Accès aux pages:
+http://localhost:8080/admin pour l'interface administrateur(login="alex" mdp="123456") (cookie de sauvegarde pour l'authentification)
+http://localhost:8080/blog pour la visibilté du blog
 
 Les fichiers statiques sont contenues dans le dossier public, lors de la creation d'un article le nom de l'image dans l'input est le nom de l'image dans le dossier public
 
